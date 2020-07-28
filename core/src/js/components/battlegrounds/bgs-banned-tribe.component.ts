@@ -44,13 +44,13 @@ export class BgsBannedTribeComponent {
 	private getExceptions(value: Race): string[] {
 		switch (value) {
 			case Race.BEAST:
-				return ['Megasaur'];
+				return []; //return ['Megasaur'];
 			case Race.DEMON:
 				return [];
 			case Race.DRAGON:
 				return [];
 			case Race.MECH:
-				return ['Zoobot'];
+				return []; //return ['Zoobot'];
 			case Race.MURLOC:
 				return [];
 			case Race.PIRATE:

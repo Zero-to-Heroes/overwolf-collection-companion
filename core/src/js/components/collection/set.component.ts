@@ -167,7 +167,7 @@ import { OverwolfService } from '../../services/overwolf.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SetComponent implements AfterViewInit {
-	private readonly MOUSE_OVER_DELAY = 300;
+	private readonly MOUSE_OVER_DELAY = 240;
 
 	_cardSet: Set;
 	_displayName = false;

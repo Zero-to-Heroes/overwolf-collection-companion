@@ -21,7 +21,18 @@
 
 .crossed {
 	position: absolute;
-	top: -1px;
+	top: 0px;
 	left: 10px;
-	width: 55px;
+	width: 50px;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.crossed:hover {
+	position: absolute;
+	top: 9px;
+	left: 14px;
+	width: 40px;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
 }

@@ -68,7 +68,7 @@ export class CardHistoryComponent implements AfterViewInit {
 	private readonly MAX_RESULTS_DISPLAYED = 1000;
 
 	_selectedCard: SetCard;
-	// @Input() showOnlyNewCards: boolean;
+	@Input() showOnlyNewCards: boolean;
 	@Input() cardHistory: readonly CardHistory[];
 	@Input() shownHistory: readonly CardHistory[];
 	@Input() totalHistoryLength: number;
@@ -99,7 +99,7 @@ export class CardHistoryComponent implements AfterViewInit {
 		// console.log('handling history click', event);
 		const rect = this.el.nativeElement.querySelector('.history').getBoundingClientRect();
 		// console.log('element rect', rect);
-		const scrollbarWidth = 5;
+		const scrollbarWidth = 7;
 		if (event.offsetX >= rect.width - scrollbarWidth) {
 			event.stopPropagation();
 		}

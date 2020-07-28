@@ -5,27 +5,27 @@ export const getTribeIcon = (tribe: string | Race): string => {
 	switch (tribe) {
 		case 'Mech':
 		case Race.MECH:
-			referenceCardId = CardIds.Collectible.Rogue.IronSensei;
+			referenceCardId = 'TB_BaconShop_HP_041b';
 			break;
 		case 'Beast':
 		case Race.BEAST:
-			referenceCardId = CardIds.NonCollectible.Neutral.MamaBear;
+			referenceCardId = 'TB_BaconShop_HP_041a';
 			break;
 		case 'Demon':
 		case Race.DEMON:
-			referenceCardId = CardIds.Collectible.Warlock.Malganis;
+			referenceCardId = 'TB_BaconShop_HP_041d';
 			break;
 		case 'Dragon':
 		case Race.DRAGON:
-			referenceCardId = CardIds.NonCollectible.Neutral.Razorgore;
+			referenceCardId = 'TB_BaconShop_HP_041f';
 			break;
 		case 'Murloc':
 		case Race.MURLOC:
-			referenceCardId = CardIds.NonCollectible.Neutral.KingBagurgle;
+			referenceCardId = 'TB_BaconShop_HP_041c';
 			break;
 		case 'Pirate':
 		case Race.PIRATE:
-			referenceCardId = 'BGS_080';
+			referenceCardId = 'TB_BaconShop_HP_041g';
 			break;
 		default:
 			referenceCardId = CardIds.NonCollectible.Neutral.ZappSlywick;
