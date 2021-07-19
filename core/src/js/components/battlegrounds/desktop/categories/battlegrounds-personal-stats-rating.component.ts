@@ -1,9 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	ElementRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Observable } from 'rxjs';
@@ -26,7 +21,7 @@ import { arraysEqual, formatDate, groupByFunction } from '../../../../services/u
 			<graph-with-single-value
 				[data]="(value$ | async).data"
 				[labels]="(value$ | async).labels"
-				emptyStateMessage="Start playing Battlegrounds with this hero to collect some information"
+				emptyStateMessage="Start playing Battlegrounds to collect some information"
 			></graph-with-single-value>
 		</div>
 	`,
@@ -35,11 +30,7 @@ import { arraysEqual, formatDate, groupByFunction } from '../../../../services/u
 export class BattlegroundsPersonalStatsRatingComponent {
 	value$: Observable<Value>;
 
-	constructor(
-		private readonly el: ElementRef,
-		private readonly cdr: ChangeDetectorRef,
-		private readonly store: AppUiStoreService,
-	) {
+	constructor(private readonly store: AppUiStoreService) {
 		this.value$ = this.store
 			.listen$(
 				([main, nav]) =>

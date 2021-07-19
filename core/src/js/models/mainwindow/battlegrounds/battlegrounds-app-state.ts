@@ -36,14 +36,15 @@ export class BattlegroundsAppState {
 	}
 
 	public findCategory(categoryId: string) {
+		console.debug('finding cat', categoryId);
 		const result = this.categories?.find((cat) => cat.id === categoryId);
 		if (result) {
 			return result;
 		}
 		return this.categories
-			.map((cat) => cat.categories)
-			.reduce((a, b) => a.concat(b), [])
-			.find((cat) => cat.findCategory(categoryId));
+			?.map((cat) => cat.categories)
+			?.reduce((a, b) => a.concat(b), [])
+			?.find((cat) => cat.findCategory(categoryId));
 	}
 
 	public findReplay(reviewId: string): GameStat {

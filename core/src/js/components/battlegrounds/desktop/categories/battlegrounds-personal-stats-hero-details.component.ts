@@ -25,7 +25,7 @@ import { OverwolfService } from '../../../../services/overwolf.service';
 					<li
 						*ngFor="let tab of tabs$ | async"
 						class="tab"
-						[ngClass]="{ 'active': tab === selectedTab }"
+						[ngClass]="{ 'active': tab === (selectedTab$ | async) }"
 						(mousedown)="selectTab(tab)"
 					>
 						{{ getLabel(tab) }}
@@ -56,8 +56,13 @@ export class BattlegroundsPersonalStatsHeroDetailsComponent implements AfterView
 		this.tabs$ = this.store
 			.listen$(([main, nav]) => main.battlegrounds.findCategory(nav.navigationBattlegrounds.selectedCategoryId))
 			.pipe(
-				filter(([category]) => !!category && category instanceof BattlegroundsPersonalStatsHeroDetailsCategory),
+				// tap(([category]) => cdLog('tabs in stats ', this.constructor.name, category)),
+				filter(
+					([category]) => !!category && !!(category as BattlegroundsPersonalStatsHeroDetailsCategory).tabs,
+				),
+				// tap(([category]) => cdLog('category checj ', this.constructor.name, category)),
 				map(([category]) => (category as BattlegroundsPersonalStatsHeroDetailsCategory).tabs),
+				// tap(([tabs]) => cdLog('tabs', this.constructor.name, tabs)),
 				distinctUntilChanged(),
 				tap((stat) => cdLog('emitting tabs in ', this.constructor.name, stat)),
 			);
@@ -66,7 +71,10 @@ export class BattlegroundsPersonalStatsHeroDetailsComponent implements AfterView
 			.pipe(
 				filter(([tab]) => !!tab),
 				map(([tab]) => tab),
-				distinctUntilChanged(),
+				distinctUntilChanged((a, b) => {
+					console.debug('changed?', a, b, a === b, a == b);
+					return a === b;
+				}),
 				tap((stat) => cdLog('emitting selected tab in ', this.constructor.name, stat)),
 			);
 		this.player$ = this.store

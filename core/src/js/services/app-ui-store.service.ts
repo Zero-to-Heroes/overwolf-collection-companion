@@ -35,7 +35,7 @@ export class AppUiStoreService {
 
 // TODO: move this somewhere else? To a facade?
 export const currentBgHeroId = (main: MainWindowState, nav: NavigationState): string => {
-	return nav.navigationBattlegrounds.selectedCategoryId.includes('bgs-category-personal-hero-details-')
+	return nav.navigationBattlegrounds.selectedCategoryId?.includes('bgs-category-personal-hero-details-')
 		? (main.battlegrounds.findCategory(
 				nav.navigationBattlegrounds.selectedCategoryId,
 		  ) as BattlegroundsPersonalStatsHeroDetailsCategory)?.heroId
